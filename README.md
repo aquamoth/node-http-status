@@ -6,7 +6,7 @@ Constants enumerating the HTTP status codes.
 Based on the [Java Apache HttpStatus API](http://hc.apache.org/httpclient-3.x/apidocs/org/apache/commons/httpclient/HttpStatus.html).
 All status codes defined in RFC1945 (HTTP/1.0), RFC2616 (HTTP/1.1), RFC2518 (WebDAV) and RFC6585 (Additional HTTP Status Codes) are supported.
 
-The TypeScript file creates the module `HttpStatus` that exports the various status codes as constants, 
+The TypeScript file exports an object with the various status codes as properties, 
 and a function `getStatusText()` that returns the english plaintext for the requested status code.
 
 The ambition was to make it easy to require the status codes using RequireJS. 
@@ -23,7 +23,7 @@ or wherever is convenient for you to require it from.
 ## Usage
 
 ```typescript
-import "http-status-codes";
+import * as HttpStatus from "http-status-codes";
 
 console.log('Status code', HttpStatus.OK, ' == ', HttpStatus.getStatusText(HttpStatus.OK));
 console.log('Status code', HttpStatus.INTERNAL_SERVER_ERROR, ' == ', HttpStatus.getStatusText(HttpStatus.INTERNAL_SERVER_ERROR));
