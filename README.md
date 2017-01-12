@@ -1,29 +1,32 @@
 # http-status-codes
 
-Constants enumerating the HTTP status codes. Based on the [Java Apache HttpStatus API](http://hc.apache.org/httpclient-3.x/apidocs/org/apache/commons/httpclient/HttpStatus.html).
+This is a fork to rewrite the status codes in **TypeScript**.
 
+Constants enumerating the HTTP status codes. 
+Based on the [Java Apache HttpStatus API](http://hc.apache.org/httpclient-3.x/apidocs/org/apache/commons/httpclient/HttpStatus.html).
 All status codes defined in RFC1945 (HTTP/1.0), RFC2616 (HTTP/1.1), RFC2518 (WebDAV) and RFC6585 (Additional HTTP Status Codes) are supported.
+
+The TypeScript file creates the module `HttpStatus` that exports the various status codes as constants, 
+and a function `getStatusText()` that returns the english plaintext for the requested status code.
+
+The ambition was to make it easy to require the status codes using RequireJS. 
+Check out [RequireJS.Net](https://github.com/vtfuture/RequireJSDotNet) for reference of how to use RequireJS + TypeScript in Mvc.Net.
 
 ## Installation
 
-```console
-npm install http-status-codes --save
-```
+The TypeScript version named `http-status-codes.ts`, while the original file `index.js` is left unaltered.
 
-## Usage (express 4.x)
+For now there isn't a Nuget package to install from. Instead just copy `http-status-codes.ts` to your local /Scripts path 
+or wherever is convenient for you to require it from.
 
-```javascript
-var HttpStatus = require('http-status-codes');
 
-response
-	.status(HttpStatus.OK)
-	.send('ok');
+## Usage
 
-response
-	.status(HttpStatus.INTERNAL_SERVER_ERROR)
-	.send({
-		error: HttpStatus.getStatusText(HttpStatus.INTERNAL_SERVER_ERROR)
-	});
+```typescript
+import "http-status-codes";
+
+console.log('Status code', HttpStatus.OK, ' == ', HttpStatus.getStatusText(HttpStatus.OK));
+console.log('Status code', HttpStatus.INTERNAL_SERVER_ERROR, ' == ', HttpStatus.getStatusText(HttpStatus.INTERNAL_SERVER_ERROR));
 ```
 
 ## Codes
